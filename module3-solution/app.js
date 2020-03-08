@@ -30,6 +30,7 @@
     narrowCtrl.foundItems = MenuSearchService.getFoundItems();
 
     narrowCtrl.getMatchedMenuItems = function(searchTerm) {
+      MenuSearchService.resetFoundItems();
       if(searchTerm) {
         MenuSearchService.getMatchedMenuItems(searchTerm);
       }
@@ -51,7 +52,6 @@
         method: "GET",
         url: (ApiBasePath + "/menu_items.json")
       }).then(function(response) {
-        foundItems = [];
         var menuItems = response.data.menu_items;
         menuItems.map(function(item) {
           if(item.description.includes(searchTerm)) {
@@ -61,6 +61,10 @@
 
         return foundItems;
       });
+    }
+
+    service.resetFoundItems = function() {
+      foundItems = [];
     }
 
     service.getFoundItems = function() {
