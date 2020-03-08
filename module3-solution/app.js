@@ -30,7 +30,7 @@
     narrowCtrl.foundItems = MenuSearchService.getFoundItems();
 
     narrowCtrl.getMatchedMenuItems = function(searchTerm) {
-      MenuSearchService.resetFoundItems();
+      narrowCtrl.foundItems = MenuSearchService.resetFoundItems();
       if(searchTerm) {
         MenuSearchService.getMatchedMenuItems(searchTerm);
       }
