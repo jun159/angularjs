@@ -30,7 +30,6 @@
     narrowCtrl.foundItems = MenuSearchService.getFoundItems();
 
     narrowCtrl.getMatchedMenuItems = function(searchTerm) {
-      narrowCtrl.foundItems = MenuSearchService.resetFoundItems();
       if(searchTerm) {
         MenuSearchService.getMatchedMenuItems(searchTerm);
       }
@@ -53,6 +52,7 @@
         url: (ApiBasePath + "/menu_items.json")
       }).then(function(response) {
         var menuItems = response.data.menu_items;
+        foundItems.length = 0;
         menuItems.map(function(item) {
           if(item.description.includes(searchTerm)) {
             foundItems.push(item);
@@ -61,10 +61,6 @@
 
         return foundItems;
       });
-    }
-
-    service.resetFoundItems = function() {
-      foundItems = [];
     }
 
     service.getFoundItems = function() {
