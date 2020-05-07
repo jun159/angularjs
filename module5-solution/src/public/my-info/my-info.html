@@ -1,0 +1,12 @@
+<div ng-show="myInfoCtrl.user">
+    First Name: {{ myInfoCtrl.user.firstname }} <br>
+    Last Name: {{ myInfoCtrl.user.lastname }} <br>
+    Email: {{ myInfoCtrl.user.email }} <br>
+    Phone: {{ myInfoCtrl.user.phone }} <br>
+    Favourite Menu: {{ myInfoCtrl.user.shortname }} <br>
+    <menu-item menu-item="myInfoCtrl.user.menuItem">
+    </menu-item>
+</div>
+<span ng-show="!myInfoCtrl.user">
+  Not Signed Up Yet. <a ui-sref="public.signup">Sign Up Now!</a>
+</span>
